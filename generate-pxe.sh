@@ -6,9 +6,9 @@
 #
 #########################################################
 VERSION=1.1
-PVE_ISO_NAME="proxmox-ve_8.2-1.iso"
-PVE_AUTO_NAME="proxmox-ve_8.2-1-auto-from-iso.iso"
-PVE_MOD_NAME="proxmox-ve_8.2-1-auto-from-iso-MOD.iso"
+PVE_ISO_NAME="proxmox-ve_9.0-1.iso"
+PVE_AUTO_NAME="proxmox-ve_9.0-1-auto-from-iso.iso"
+PVE_MOD_NAME="proxmox-ve_9.0-1-auto-from-iso-MOD.iso"
 ANSWER_FILE="answer.toml"
 MBR_FILE="proxmox.mbr"
 SQUASHFS_BASE="pve-base.squashfs"
@@ -118,8 +118,8 @@ umount $WORKDIR/mnt
 Info "extract PVE root squashfs image"
 cd $WORKDIR/tmp
 
-unsquashfs $WORKDIR/tmp/$SQUASHFS_BASE
-if [ $? -ne 0 ]; then
+unsquashfs -ig $WORKDIR/tmp/$SQUASHFS_BASE
+if [ $? -eq 1 ]; then
     Error "Unable to extract $SQUASHFS_BASE"
 fi
 cd /
@@ -168,8 +168,8 @@ cd /
 Info "extract PVE installer squashfs image"
 cd $WORKDIR/tmp
 
-unsquashfs $WORKDIR/tmp/$SQUASHFS_INSTALLER
-if [ $? -ne 0 ]; then
+unsquashfs -ig $WORKDIR/tmp/$SQUASHFS_INSTALLER
+if [ $? -eq 1 ]; then
     Error "Unable to extract $SQUASHFS_INSTALLER"
 fi
 
