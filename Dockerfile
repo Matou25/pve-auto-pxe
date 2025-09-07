@@ -16,6 +16,6 @@ RUN git clone --depth 1 https://github.com/morph027/pve-iso-2-pxe /opt/pve-iso-2
 RUN apt install -y cpio file zstd gzip genisoimage mkisofs squashfs-tools
 
 ADD ./generate-pxe.sh /opt/generate-pxe.sh
-chmod 664 /opt/generate-pxe.sh
+RUN chmod 664 /opt/generate-pxe.sh
 
 ENTRYPOINT ["/opt/generate-pxe.sh"]
