@@ -1,6 +1,6 @@
 FROM debian:bookworm
 
-RUN apt update && apt -y install wget
+RUN apt update && apt -y install wget,apt-utils
 
 # from https://pve.proxmox.com/wiki/Install_Proxmox_VE_on_Debian_12_Bookworm
 RUN echo "deb [arch=amd64] http://download.proxmox.com/debian/pve bookworm pve-no-subscription" > /etc/apt/sources.list.d/pve-install-repo.list
